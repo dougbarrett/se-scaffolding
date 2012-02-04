@@ -1,5 +1,3 @@
-This software is bootstraped using the codeigniter file
-
 Copyright (c) 2008 - 2011, EllisLab, Inc.
 All rights reserved.
 
