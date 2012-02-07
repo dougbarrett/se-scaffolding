@@ -22,6 +22,26 @@ class Admin extends CI_Controller {
 		
 		$this->load->view('admin/index');
 	}
+	
+	public function writeTest(){
+		$fileInfo->title = "Title of the webpage";
+
+		$data = 'Some file data';
+
+		if ( ! write_file('./path/to/file.php', $data))
+		{
+		     echo 'Unable to write the file';
+		}
+		else
+		{
+		     echo 'File written!';
+		}
+	}
+	
+	public function _showPage($viewPage, $viewData = NULL) {
+		$parse->body = $this->load->view($viewPage, $viewData, TRUE);
+		$this->parser->parse('admin/template', $parse);
+	}
 }
 
 /* End of file welcome.php */
