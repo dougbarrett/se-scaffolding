@@ -1,38 +1,36 @@
-<!DOCTYPE HTML>
-<html lang="en-US">
-<head>
-	<meta charset="UTF-8">
-	<title></title>
-	<link rel="stylesheet" href="/css/bootstrap.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
-	<link rel="stylesheet" href="/css/bootstrap.min.responsive.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
-	<style type="text/css" media="screen">
-		.header h1{
-			padding:15px 0;
-		}
-	</style>
-</head>
-<body>
-	<div class="container">
-		<div class="row">
-			<div class="span12 header">
-				<h1 id="">Admin Control Panel</h1>
-			</div>
+<div class="container">
+	<div class="row">
+		<div class="span12">
+			<h2>Admin Home</h2>
+			<hr />
+		</div>
+		<div class="span6">
+			<h3>Page List</h3>
+				<table class="table table-striped table-bordered table-condensed">
+					<tr><th>Title</th>
+						<th>URL</th>
+					</tr>
+				<?php foreach($pageList as $url=>$title): ?>
+					<tr>
+						<td><?= anchor('admin/editpage/' . $url, $title); ?></td>
+						<td><?= $url; ?></td>
+					</tr>
+				<?php endforeach; ?>
+				</table>
+		</div>
+		<div class="span6">
+			<h3>Template List</h3>
+				<table class="table table-striped table-bordered table-condensed">
+					<tr><th>Title</th>
+						<th>Hash</th>
+					</tr>
+				<?php foreach($templateList as $hash=>$title): ?>
+					<tr>
+						<td><?= anchor('admin/edittemplate/' . $hash, $title); ?></td>
+						<td><?= $hash; ?></td>
+					</tr>
+				<?php endforeach; ?>
+				</table>
 		</div>
 	</div>
-	<div class="container">
-		<div class="navbar">
-			<div class="navbar-inner">
-				<div class="container">
-					<ul class="nav">
-						<li><a href="#">Overview</a></li>
-						<li><a href="#">Add Page</a></li>
-						<li><a href="#">Add Template</a></li>
-						<li><a href="#">Add Media</a></li>
-						<li><a href="#">Logout</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-</body>
-</html>
+</div>

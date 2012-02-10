@@ -38,7 +38,11 @@
 |
 */
 
-$route['default_controller'] = "welcome";
+$route['default_controller'] = "profile/view/index";
+$route['admin'] = 'admin';
+#$route['admin/editpage/index'] = 'admin/editpage/index';
+$route['admin/(:any)'] = 'admin/$1';
+$route['(:any)'] = 'profile/view/$1';
 $route['404_override'] = '';
 
 
