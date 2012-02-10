@@ -47,7 +47,7 @@ class Admin extends CI_Controller {
 		$this->parser->parse('admin/template', $parse);
 	}
 	
-	public function _savePage($delete = NULL) {
+	public function _savePage($pageURL = NULL) {
 		if(!empty($delete))
 			unlink("./ds/pages/$pageURL.php");
 		
@@ -70,7 +70,7 @@ class Admin extends CI_Controller {
 				$pageList = (array)json_decode(file_get_contents("./ds/pagelist.json"));
 				
 				if(!empty($delete))
-					unset($pageList[$delete]);
+					unset($pageList[$pageURL]);
 				
 				$pageList[$fileInfo->pageURL] = $fileInfo->title;
 								
