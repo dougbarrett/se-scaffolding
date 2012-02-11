@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="/css/bootstrap.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
 	<link rel="stylesheet" href="/css/bootstrap.min.responsive.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
     <link rel="stylesheet" href="/lib/codemirror.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script src="/lib/codemirror.js"></script>
     <script src="/mode/xml/xml.js"></script>
     <script src="/mode/markdown/markdown.js"></script>
@@ -30,10 +31,9 @@
 				<div class="container">
 					<ul class="nav">
 						<li><?= anchor('admin', 'Overview'); ?></li>
-						<li><?= anchor('admin/addpage', 'Add Page'); ?></li>
-						<li><?= anchor('admin/addtemplate', 'Add Template'); ?></li>
-						<li><a href="#">Add Media</a></li>
-						<li><a href="#">Logout</a></li>
+						<li><?= anchor('admin/media', 'Media Manager'); ?></li>
+						<li><?= anchor('admin/settings', 'Settings'); ?></li>
+						<li><?= anchor('admin/logout', 'Logout'); ?></li>
 					</ul>
 				</div>
 			</div>

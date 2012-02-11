@@ -30,8 +30,19 @@ class Profile extends CI_Controller {
 		
 		$templateData = json_decode(file_get_contents("./ds/templates/$pageData->pageTemplate.php"));
 		
+		$bodyView->imageopen = '<img src="/images/';
+		$bodyView->imageclose = '" />';
+		$bodyView->imageURL = "/images/";
+		$bodyView->mediaURL = "/media/";
+		
+		$pageData->pageBody = $this->parser->parse_string($pageData->pageBody, $bodyView, TRUE);
+		
 		$templateView->title = $pageData->title;
 		$templateView->body = Markdown($pageData->pageBody);
+		$templateView->opencss = '<link rel="stylesheet" href="/usercss/';
+		$templateView->closecss = '.css" type="text/css" charset="utf-8"/>';
+		$templateView->openimage = '<img src=""';
+		$templateView->closeimage = '" />';
 		
 		$this->parser->parse_string($templateData->body, $templateView);
 		
