@@ -2,6 +2,18 @@
 
 class Admin extends CI_Controller {
 
+       public function __construct()
+       {
+            parent::__construct();
+            // Your own constructor code
+            
+            if(! file_exists('./ds/sitesettings.json'))
+				redirect('setup');
+			
+			if($this->session->userdata('loggedin') != TRUE)
+				redirect('login');
+       }
+
 	public function index()
 	{
 		@$viewData->pageList = (array)json_decode(file_get_contents('./ds/pagelist.json'));
@@ -11,6 +23,7 @@ class Admin extends CI_Controller {
 	}
 	
 	public function logout() {
+		$this->session->sess_destroy();
 		redirect('');
 	}
 	
@@ -35,6 +48,21 @@ class Admin extends CI_Controller {
 		$cssFile->name = $cssName;
 		$cssFile->body = read_file('./ds/less/' . $cssName . '.less');
 		$this->_showPage('editCSS', $cssFile);
+	}
+
+	public function settings() {
+		if($this->input->post('username')) {
+	   		$saveData->hash = random_string('alnum', 32);
+			$saveData->username = md5($saveData->hash . $this->input->post('username'));
+			$saveData->password = md5($saveData->hash . $this->input->post('password'));
+			
+			$saveData = json_encode($saveData);
+			
+			if(write_file('./ds/sitesettings.json', $saveData)) {
+				redirect('admin/settings');
+			}
+		}
+		$this->_showPage('settings');
 	}
 	
 	public function addpage(){
@@ -64,16 +92,20 @@ class Admin extends CI_Controller {
 	}
 	
 	public function deletepage($pageURL) {
+		$pageURL = (string)$pageURL;
+		
 		unlink('./ds/pages/' . $pageURL . '.php');
 		
 		$pageList = (array)json_decode(file_get_contents("./ds/pagelist.json"));
 		
 		unset($pageList[$pageURL]);
 		
+		
 		$data = json_encode($pageList);
 				
-				if(write_file('./ds/pagelist.json', $data))
-			     	redirect('admin');
+		if(write_file('./ds/pagelist.json', $data)) {
+			redirect('admin');
+		}
 	}
 	
 	public function deletetemplate($templateHash) {

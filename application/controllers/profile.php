@@ -24,7 +24,16 @@ class Profile extends CI_Controller {
 		
 		$pageName = $this->uri->uri_string();
 		$pageName = (empty($pageName)) ? 'index' : str_replace("/", "", $pageName);
-		$pageData = file_get_contents("./ds/pages/" . $pageName . ".php");
+		if(file_exists(('./ds/pages/'. $pageName . '.php'))) {
+			$pageData = file_get_contents("./ds/pages/" . $pageName . ".php");
+		} else {
+			if(file_exists('./ds/pages/pagenotfound.php')) {
+				$pageData = file_get_contents("./ds/pages/pagenotfound.php");
+			} else {
+				echo "Bad web developer, bad! Page cannot be found, and no 'pagenotfound' page exists! Woops!";
+				exit;
+			}
+		}
 		
 		$pageData = json_decode($pageData);
 		
@@ -41,8 +50,10 @@ class Profile extends CI_Controller {
 		$templateView->body = Markdown($pageData->pageBody);
 		$templateView->opencss = '<link rel="stylesheet" href="/usercss/';
 		$templateView->closecss = '.css" type="text/css" charset="utf-8"/>';
-		$templateView->openimage = '<img src=""';
-		$templateView->closeimage = '" />';
+		$templateView->imageopen = '<img src="/images/';
+		$templateView->imageclose = '" />';
+		$templateView->imageURL = "/images/";
+		$templateView->mediaURL = "/media/";
 		
 		$this->parser->parse_string($templateData->body, $templateView);
 		
