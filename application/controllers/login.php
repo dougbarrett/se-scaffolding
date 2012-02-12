@@ -22,7 +22,7 @@ class Login extends CI_Controller {
 			$username = $this->input->post('username');
 			$password = $this->input->post('password');
 			
-	   		if(($settingsData->username == md5($settingsData->hash . $username) && ($settingsData->password = $settingsData->hash . $password))) {
+	   		if(($settingsData->username == md5($settingsData->hash . $username)) && ($settingsData->password = md5($settingsData->hash . $password))) {
 	   			$this->session->set_userdata('loggedin', 1);
 				redirect('admin');
 	   		}
