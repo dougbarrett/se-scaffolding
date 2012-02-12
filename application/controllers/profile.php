@@ -52,8 +52,8 @@ class Profile extends CI_Controller {
 		$templateView->closecss = '.css" type="text/css" charset="utf-8"/>';
 		$templateView->imageopen = '<img src="/images/';
 		$templateView->imageclose = '" />';
-		$templateView->imageURL = "/images/";
-		$templateView->mediaURL = "/media/";
+		$templateView->imageURL = site_url() . "/images/";
+		$templateView->mediaURL = site_url() . "/media/";
 		
 		$this->parser->parse_string($templateData->body, $templateView);
 		

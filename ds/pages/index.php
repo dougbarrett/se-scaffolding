@@ -1,1 +1,1 @@
-{"title":"Welcome","hash":"vs1hW4DwbMYGKYU4","pageURL":"index","pageBody":"##This is the homepage!\r\nThank you for downloading SES! To discover what you can do with SES, go to the [admin](\/admin)!","pageTemplate":"OEVAgwDBC64C1k2v"}
+{"title":"Welcome","hash":"QSGDEqUKTFPtCt2r","pageURL":"index","pageBody":"##This is the homepage!\r\nThank you for downloading SES! To discover what you can do with SES, go to the [admin](\/admin)!\r\n\r\nThe default username\/password is: demo\/demo","pageTemplate":"OEVAgwDBC64C1k2v"}

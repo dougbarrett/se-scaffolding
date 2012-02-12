@@ -14,7 +14,7 @@
 		<div class="control-group">
 			<label>Password</label>
 			<div class="controls">
-				<?= form_input('password'); ?>
+				<?= form_password('password'); ?>
 			</div>
 		</div>
 		<div class="form-actions">

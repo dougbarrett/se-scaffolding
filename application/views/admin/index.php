@@ -21,7 +21,7 @@
 				</table>
 		</div>
 		<div class="span6">
-			<h3>Template List | <a href="/admin/addpage">Add Page</a></h3>
+			<h3>Template List | <a href="/admin/addtemplate">Add Template</a></h3>
 				<table class="table table-striped table-bordered table-condensed">
 					<tr><th>Title</th>
 						<th>&nbsp;</th>

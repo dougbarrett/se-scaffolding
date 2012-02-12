@@ -47,7 +47,7 @@ class Admin extends CI_Controller {
 		}
 		$cssFile->name = $cssName;
 		$cssFile->body = read_file('./ds/less/' . $cssName . '.less');
-		$this->_showPage('editCSS', $cssFile);
+		$this->_showPage('editcss', $cssFile);
 	}
 
 	public function settings() {
