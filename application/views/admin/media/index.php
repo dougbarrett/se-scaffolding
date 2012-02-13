@@ -13,7 +13,7 @@
 			<?= form_close(); ?>
 			<hr />
 			<?php $imageList = get_filenames('./images/');
-				foreach($imageList as $image): ?>
+				foreach(@$imageList as $image): ?>
 				<p><?= $image; ?> | <?= anchor('admin/deleteimage/' . $image, 'Delete'); ?></p>
 			<?php endforeach; ?>
 		</div>
@@ -25,7 +25,7 @@
 			<?= form_close(); ?>
 			<hr />
 			<?php $mediaList = get_filenames('./media/');
-				foreach($mediaList as $media): ?>
+				foreach(@$mediaList as $media): ?>
 				<p><?= $media; ?> | <?= anchor('admin/deletemedia/' . $media, 'Delete'); ?></p>
 			<?php endforeach; ?>
 		</div>
