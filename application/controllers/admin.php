@@ -38,7 +38,7 @@ class Admin extends CI_Controller {
 		if($this->input->post('cssName')) {
 			$this->_saveCSS();
 		}
-		$this->_showPage('addCSS');
+		$this->_showPage('addcss');
 	}
 	
 	public function editcss($cssName = null) {
