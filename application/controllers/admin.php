@@ -62,7 +62,21 @@ class Admin extends CI_Controller {
 				redirect('admin/settings');
 			}
 		}
-		$this->_showPage('settings');
+		if($this->input->post('saveDefaults')) {
+			$saveData->defaultTitle = $this->input->post('defaultTitle');
+			$saveData->defaultKeywords = $this->input->post('defaultKeywords');
+			$saveData->defaultDescription = $this->input->post('defaultDescription');
+			
+			$saveData = json_encode($saveData);
+			
+			if(write_file('./ds/defaultsettings.json', $saveData)) {
+				redirect('admin/settings');
+			}
+		}
+		@$defaultSettings = json_decode(read_file('./ds/defaultsettings.json'));
+		
+		$viewData->defaultSettings = $defaultSettings;
+		$this->_showPage('settings', $viewData);
 	}
 	
 	public function addpage(){
@@ -197,6 +211,8 @@ class Admin extends CI_Controller {
 			$fileInfo->hash = random_string('alnum', 16);
 			$fileInfo->pageURL = $this->input->post('pageURL');
 			$fileInfo->pageBody = $this->input->post('pageBody');
+			$fileInfo->pageDescription = $this->input->post('pageDescription');
+			$fileInfo->pageKeywords = $this->input->post('pageKeywords');
 			$fileInfo->pageTemplate = $this->input->post('pageTemplate');
 	
 			$data = json_encode($fileInfo);

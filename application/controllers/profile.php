@@ -37,6 +37,12 @@ class Profile extends CI_Controller {
 		
 		$pageData = json_decode($pageData);
 		
+		$defaultSettings = json_decode(read_file('./ds/defaultsettings.json'));
+		
+		$pageMeta->title = (isset($pageData->pageTitle)) ? $pageData->pageTitle : $defaultSettings->defaultTitle;
+		$pageMeta->keywords = (isset($pageData->pageKeywords)) ? $pageData->pageKeywords : $defaultSettings->defaultKeywords;
+		$pageMeta->description = (isset($pageData->pageDescription)) ? $pageData->pageDescription : $defaultSettings->defaultDescription;
+		
 		$templateData = json_decode(file_get_contents("./ds/templates/$pageData->pageTemplate.php"));
 		
 		$bodyView->imageopen = '<img src="/images/';
@@ -46,7 +52,9 @@ class Profile extends CI_Controller {
 		
 		$pageData->pageBody = $this->parser->parse_string($pageData->pageBody, $bodyView, TRUE);
 		
-		$templateView->title = $pageData->title;
+		$templateView->title = $pageMeta->title;
+		$templateView->meta = '<meta content="'. $pageMeta->description . '" name="description">';
+		$templateView->meta .= '<meta content="'. $pageMeta->keywords . '" name="keywords">';
 		$templateView->body = Markdown($pageData->pageBody);
 		$templateView->opencss = '<link rel="stylesheet" href="/usercss/';
 		$templateView->closecss = '.css" type="text/css" charset="utf-8"/>';

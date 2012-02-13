@@ -35,6 +35,26 @@
 			</div>
 		</div>
 		<div class="span3">&nbsp;</div>
+	</div>
+	<div class="row">
+		<div class="span3">
+			<div class="control-group">
+				<label>Keywords</label>
+				<div class="controls">
+					<?= form_input('pageKeywords'); ?>
+				</div>
+			</div>
+		</div>
+		<div class="span9">
+			<div class="control-group">
+				<label>Description</label>
+				<div class="controls">
+					<textarea name="pageDescription" rows="3" style="width:100%;"></textarea>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
 		<div class="span12">
 				<div class="control-group">
 					<label>Page Body</label>
