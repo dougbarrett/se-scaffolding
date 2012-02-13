@@ -39,9 +39,9 @@ class Profile extends CI_Controller {
 		
 		$defaultSettings = json_decode(read_file('./ds/defaultsettings.json'));
 		
-		$pageMeta->title = (isset($pageData->pageTitle)) ? $pageData->pageTitle : $defaultSettings->defaultTitle;
-		$pageMeta->keywords = (isset($pageData->pageKeywords)) ? $pageData->pageKeywords : $defaultSettings->defaultKeywords;
-		$pageMeta->description = (isset($pageData->pageDescription)) ? $pageData->pageDescription : $defaultSettings->defaultDescription;
+		$pageMeta->title = (@isset($pageData->pageTitle)) ? $pageData->pageTitle : $defaultSettings->defaultTitle;
+		$pageMeta->keywords = (@isset($pageData->pageKeywords)) ? $pageData->pageKeywords : $defaultSettings->defaultKeywords;
+		$pageMeta->description = (@isset($pageData->pageDescription)) ? $pageData->pageDescription : $defaultSettings->defaultDescription;
 		
 		$templateData = json_decode(file_get_contents("./ds/templates/$pageData->pageTemplate.php"));
 		
