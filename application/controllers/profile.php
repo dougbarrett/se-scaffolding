@@ -21,7 +21,8 @@ class Profile extends CI_Controller {
 	{
 		
 		$this->load->model('page');
-		echo $this->page->view($pageName);
+		$viewData->html = $this->page->view($pageName);
+		$this->load->view('blank', $viewData);
 	}
 	
 }

@@ -26,7 +26,8 @@ class Page extends CI_Model {
 			if(file_exists('./ds/pages/pagenotfound.php')) {
 				$pageData = file_get_contents("./ds/pages/pagenotfound.php");
 			} else {
-				echo "Bad web developer, bad! Page cannot be found, and no 'pagenotfound' page exists! Woops!";
+				$viewData->html = "Bad web developer, bad! Page cannot be found, and no 'pagenotfound' page exists! Woops!";
+				$this->load->view('blank', $viewData);
 				exit;
 			}
 		}

@@ -221,7 +221,8 @@ class Admin extends CI_Controller {
 	
 			if ( ! write_file('./ds/pages/' . $fileInfo->pageURL . '.php', $data))
 			{
-			     echo 'Unable to write the file';
+			     $pageView->html = 'Unable to write the file';
+				 $this->load->view('blank', $pageView);
 			}
 			else
 			{
@@ -253,7 +254,8 @@ class Admin extends CI_Controller {
 			
 			if ( ! write_file('./ds/templates/' . $fileInfo->hash . '.php', $data))
 			{
-			     echo 'Unable to write the file';
+			     $pageView->html = 'Unable to write the file';
+				 $this->load->view('blank', $pageView);
 			}
 			else
 			{
