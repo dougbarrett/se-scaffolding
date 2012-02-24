@@ -109,6 +109,7 @@ class Admin extends CI_Controller {
 		$pageURL = (string)$pageURL;
 		
 		unlink('./ds/pages/' . $pageURL . '.php');
+		unlink('./ds/html/' . $pageURL . '.html');
 		
 		$pageList = (array)json_decode(file_get_contents("./ds/pagelist.json"));
 		
@@ -234,8 +235,11 @@ class Admin extends CI_Controller {
 								
 				$data = json_encode($pageList);
 				
-				if(write_file('./ds/pagelist.json', $data))
-			     	redirect('admin');
+				if(write_file('./ds/pagelist.json', $data)) {
+					$this->load->model('page');
+					if($this->page->view($fileInfo->pageURL, TRUE))
+						redirect('admin');
+				}
 			}	
 	}
 	
