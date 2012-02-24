@@ -24,6 +24,12 @@ class Profile extends CI_Controller {
 		
 		$pageName = $this->uri->uri_string();
 		$pageName = (empty($pageName)) ? 'index' : str_replace("/", "", $pageName);
+		
+		if(file_exists('./ds/html/' . $pageName . '.html')) {
+			echo read_file('./ds/html/' . $pageName . '.html');
+			exit;
+		}
+		
 		if(file_exists(('./ds/pages/'. $pageName . '.php'))) {
 			$pageData = file_get_contents("./ds/pages/" . $pageName . ".php");
 		} else {
@@ -63,9 +69,11 @@ class Profile extends CI_Controller {
 		$templateView->imageURL = site_url() . "/images/";
 		$templateView->mediaURL = site_url() . "/media/";
 		
-		$this->parser->parse_string($templateData->body, $templateView);
+		$html = $this->parser->parse_string($templateData->body, $templateView, TRUE);
 		
-
+		write_file('./ds/html/' . $pageName . '.html' , $html);
+		
+		echo $html;
 	}
 	
 	public function _showPage($viewPage, $viewData = NULL) {
