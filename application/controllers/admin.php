@@ -70,6 +70,11 @@ class Admin extends CI_Controller {
 			$saveData = json_encode($saveData);
 			
 			if(write_file('./ds/defaultsettings.json', $saveData)) {
+				
+					$this->load->model('page');
+					
+					$this->page->refreshSite();
+				
 				redirect('admin/settings');
 			}
 		}
@@ -77,6 +82,10 @@ class Admin extends CI_Controller {
 		
 		$viewData->defaultSettings = $defaultSettings;
 		$this->_showPage('settings', $viewData);
+	}
+
+	public function update(){
+		$this->_showPage('update');
 	}
 	
 	public function addpage(){
@@ -266,8 +275,14 @@ class Admin extends CI_Controller {
 				
 				$data = json_encode($templateList);
 				
-				if(write_file('./ds/templatelist.json', $data))
-			     	redirect('admin');
+				if(write_file('./ds/templatelist.json', $data)) {
+					$this->load->model('page');
+					
+					
+					$this->page->refreshSite();
+										
+					redirect('admin');
+				}
 			}	
 	}
 }

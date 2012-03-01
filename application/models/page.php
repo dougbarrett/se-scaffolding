@@ -7,10 +7,18 @@ class Page extends CI_Model {
         // Call the Model constructor
         parent::__construct();
     }
+	
+	function refreshSite(){
+		$pageList = (array)json_decode(file_get_contents('./ds/pagelist.json'));
+					
+		foreach($pageList as $pageName => $pageTitle) {
+			$this->page->view($pageName, TRUE);
+		}
+	}
     
     function view($pageName, $forceCache = NULL)
     {
-		include('./includes/markdown.php');
+		require_once('./includes/markdown.php');
 		
 		$pageName = (isset($forceCache)) ? $pageName : $this->uri->uri_string();
 		$pageName = (empty($pageName)) ? 'index' : str_replace("/", "", $pageName);

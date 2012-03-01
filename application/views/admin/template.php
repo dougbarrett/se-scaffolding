@@ -33,6 +33,10 @@
 						<li><?= anchor('admin', 'Overview'); ?></li>
 						<li><?= anchor('admin/media', 'Media Manager'); ?></li>
 						<li><?= anchor('admin/settings', 'Settings'); ?></li>
+						<?php $updateAvail = $this->session->userdata('update'); ?>
+						<?php if($updateAvail):?>
+						<li><?= anchor('admin/update', 'Update'); ?></li>
+						<?php endif; ?>
 						<li><?= anchor('admin/logout', 'Logout'); ?></li>
 					</ul>
 				</div>
