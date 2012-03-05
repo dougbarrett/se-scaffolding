@@ -15,6 +15,12 @@
 			padding:15px 0;
 		}
       .CodeMirror {border: 1px solid black;}
+              .CodeMirror-scroll {
+		 	height: auto;
+		 	overflow-y: hidden;
+		 	overflow-x: auto;
+		 	width: 100%
+		}
 	</style>
 </head>
 <body>

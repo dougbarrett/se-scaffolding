@@ -161,7 +161,7 @@ class Admin extends CI_Controller {
 	
 	public function addimage(){
 		$config['upload_path'] = './images/';
-		$config['allowed_types'] = 'gif|jpg|png';
+		$config['allowed_types'] = 'gif|jpg|png|jpeg';
 		
 		$this->load->library('upload', $config);
 		

@@ -9,7 +9,7 @@
 			<h3>Add Image</h3>
 			<?= form_open_multipart('admin/addimage') ?>
 				<input type="file" name="userfile"/>
-				<?= form_submit(array('class' => 'btn btn-primary'), 'Upload'); ?>
+				<?= form_submit(array('class' => 'btn btn-primary', 'name' => 'userfile'), 'Upload'); ?>
 			<?= form_close(); ?>
 			<hr />
 			<?php $imageList = get_filenames('./images/');
@@ -21,7 +21,7 @@
 			<h3>Add Other Media</h3>
 			<?= form_open_multipart('admin/addmedia') ?>
 				<input type="file" name="userfile"/>
-				<?= form_submit(array('class' => 'btn btn-primary'), 'Upload'); ?>
+				<?= form_submit(array('class' => 'btn btn-primary', 'name' => 'userfile'), 'Upload'); ?>
 			<?= form_close(); ?>
 			<hr />
 			<?php $mediaList = get_filenames('./media/');
