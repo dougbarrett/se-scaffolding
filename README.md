@@ -1,4 +1,4 @@
-#SE Scaffolding (Stupid Easy Scaffolding)
+#SE Scaffolding (Super Easy Scaffolding)
 ##A new way to develop websites
 
 What is SE Scaffolding?
